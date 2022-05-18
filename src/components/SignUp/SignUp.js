@@ -34,6 +34,8 @@ const SignUp = () => {
     const specializareStudentInputRef = useRef(null);
     const judetStudentInputRef = useRef(null);
     //
+    const numeProfesorInputRef = useRef(null);
+    const prenumeProfesorInputRef = useRef(null);
 
     const rolHandler = (e) => {
         setRol(e.target.value);
@@ -158,7 +160,22 @@ const SignUp = () => {
             />
         </div>
     );
-    const inregistrareProfesor = <div>formular Profesor</div>;
+    const inregistrareProfesor = <div className={styles["inputs-container"]}>
+            <TextField
+                id="outlined-name"
+                label="Nume"
+                type="text"
+                ref={numeProfesorInputRef}
+                required
+            />
+            <TextField
+                id="outlined-name"
+                label="Prenume"
+                type="text"
+                ref={prenumeProfesorInputRef}
+                required
+            />
+    </div>;
 
     return (
         <div className={styles["bg-login"]}>
