@@ -88,6 +88,23 @@ const SignUp = () => {
             returnSecureToken: true,
         });
 
+        const bodyTutore = JSON.stringify({
+            email: enteredEmail,
+            password: enteredPassword,
+            nume: enteredNumeTutore,
+            prenume: enteredPrenumeTutore,
+            firmaTutore: enteredFirmaTutore,
+            returnSecureToken: true,
+        });
+
+        const bodyProfesor = JSON.stringify({
+            email: enteredEmail,
+            password: enteredPassword,
+            nume: enteredNumeProfesor,
+            prenume: enteredPrenumeProfesor,
+            returnSecureToken: true,
+        });
+
         setIsLoading(true);
         let url =
             "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBVVF0vjKQevex3hCiaGrNpqtJulOS3PFA";
