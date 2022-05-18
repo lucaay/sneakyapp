@@ -54,14 +54,14 @@ const SignUp = () => {
         event.preventDefault();
 
         const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
+        const enteredPassword = passwordInputRef.current.value;
+        const enteredDenumireFirma = denumireFirmaRef.current.value;
+        const enteredCui = cuiInputRef.current.value;
+        const enteredJudetFirma = judetFirmaInputRef.current.value;
+        const enteredDomeniuActivitate = domeniuActivitateInputRef.current.value;
+        const enteredNumeTutore = numeTutoreInputRef.current.value;
+        const enteredPrenumeTutore = prenumeTutoreInputRef.current.value;
+        const enteredFirmaTutore = firmaTutoreInputRef.current.value;
         const enteredEmail = emailInputRef.current.value;
         const enteredEmail = emailInputRef.current.value;
         const enteredEmail = emailInputRef.current.value;
