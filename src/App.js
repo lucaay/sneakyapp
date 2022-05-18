@@ -4,7 +4,7 @@ import LogIn from "./components/LogIn/LogIn";
 const App = () => {
     return (
         <div>
-            <LogIn />
+            <p>hello there</p>
         </div>
     );
 };

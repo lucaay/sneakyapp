@@ -1,6 +1,7 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 const LogIn = () => {
     return (
@@ -26,6 +27,7 @@ const LogIn = () => {
             <Button variant="contained">LOGIN</Button>
             <div>
                 <p>Dorești să te înregistrezi?</p>
+                <Link to="/signup">Creează un cont.</Link>
             </div>
         </form>
     );
