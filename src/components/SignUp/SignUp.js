@@ -8,10 +8,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { Navigate } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
-import { LocalizationProvider } from "@mui/x-date-pickers";
 
 const SignUp = () => {
     const [rol, setRol] = useState("");
@@ -56,71 +54,129 @@ const SignUp = () => {
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
 
-        const enteredDenumireFirma = denumireFirmaRef.current.value;
-        const enteredCui = cuiInputRef.current.value;
-        const enteredJudetFirma = judetFirmaInputRef.current.value;
-        const enteredDomeniuActivitate =
-            domeniuActivitateInputRef.current.value;
+        let body;
+        switch (rol) {
+            case "firma":
+                const enteredDenumireFirma = denumireFirmaRef.current.value;
+                const enteredCui = cuiInputRef.current.value;
+                const enteredJudetFirma = judetFirmaInputRef.current.value;
+                const enteredDomeniuActivitate =
+                    domeniuActivitateInputRef.current.value;
 
-        const enteredNumeTutore = numeTutoreInputRef.current.value;
-        const enteredPrenumeTutore = prenumeTutoreInputRef.current.value;
-        const enteredFirmaTutore = firmaTutoreInputRef.current.value;
+                body = JSON.stringify({
+                    email: enteredEmail,
+                    password: enteredPassword,
+                    rol,
+                    denumire: enteredDenumireFirma,
+                    cui: enteredCui,
+                    judet: enteredJudetFirma,
+                    domeniuActivitate: enteredDomeniuActivitate,
+                    returnSecureToken: true,
+                });
+                break;
+            case "student":
+                const enteredNumeStudent = numeStudentInputRef.current.value;
+                const enteredPrenumeStudent =
+                    prenumeStudentInputRef.current.value;
+                const enteredDataNStudent = dataNStudentInputRef.current.value;
+                const enteredFacultateStudent =
+                    facultateStudentInputRef.current.value;
+                const enteredAnStudent = anStudentInputRef.current.value;
+                const enteredSpecializareStudent =
+                    specializareStudentInputRef.current.value;
+                const enteredJudetStudent = judetStudentInputRef.current.value;
 
-        const enteredNumeStudent = numeStudentInputRef.current.value;
-        const enteredPrenumeStudent = prenumeStudentInputRef.current.value;
-        const enteredDataNStudent = dataNStudentInputRef.current.value;
-        const enteredFacultateStudent = facultateStudentInputRef.current.value;
-        const enteredAnStudent = anStudentInputRef.current.value;
-        const enteredSpecializareStudent =
-            specializareStudentInputRef.current.value;
-        const enteredJudetStudent = judetStudentInputRef.current.value;
+                body = JSON.stringify({
+                    email: enteredEmail,
+                    password: enteredPassword,
+                    rol,
+                    nume: enteredNumeStudent,
+                    prenume: enteredPrenumeStudent,
+                    dataNastere: enteredDataNStudent,
+                    facultate: enteredFacultateStudent,
+                    an: enteredAnStudent,
+                    specializare: enteredSpecializareStudent,
+                    judet: enteredJudetStudent,
 
-        const enteredNumeProfesor = numeProfesorInputRef.current.value;
-        const enteredPrenumeProfesor = prenumeProfesorInputRef.current.value;
+                    returnSecureToken: true,
+                });
+                break;
+            case "tutore":
+                const enteredNumeTutore = numeTutoreInputRef.current.value;
+                const enteredPrenumeTutore =
+                    prenumeTutoreInputRef.current.value;
+                const enteredFirmaTutore = firmaTutoreInputRef.current.value;
 
-        const bodyFirma = JSON.stringify({
-            email: enteredEmail,
-            password: enteredPassword,
-            denumire: enteredDenumireFirma,
-            cui: enteredCui,
-            judet: enteredJudetFirma,
-            domeniuActivitate: enteredDomeniuActivitate,
-            returnSecureToken: true,
-        });
+                body = JSON.stringify({
+                    email: enteredEmail,
+                    password: enteredPassword,
+                    rol,
+                    nume: enteredNumeTutore,
+                    prenume: enteredPrenumeTutore,
+                    firmaTutore: enteredFirmaTutore,
+                    returnSecureToken: true,
+                });
+                break;
+            case "profesor":
+                const enteredNumeProfesor = numeProfesorInputRef.current.value;
+                const enteredPrenumeProfesor =
+                    prenumeProfesorInputRef.current.value;
 
-        const bodystudent = JSON.stringify({
-            email: enteredEmail,
-            password: enteredPassword,
-            nume: enteredNumeStudent,
-            prenume: enteredPrenumeStudent,
-            dataNastere: enteredDataNStudent,
-            an: enteredAnStudent,
-            judet: enteredJudetStudent,
-        });
+                body = JSON.stringify({
+                    email: enteredEmail,
+                    password: enteredPassword,
+                    rol,
+                    nume: enteredNumeProfesor,
+                    prenume: enteredPrenumeProfesor,
+                    returnSecureToken: true,
+                });
+                break;
 
-        const bodyTutore = JSON.stringify({
-            email: enteredEmail,
-            password: enteredPassword,
-            nume: enteredNumeTutore,
-            prenume: enteredPrenumeTutore,
-            firmaTutore: enteredFirmaTutore,
-            returnSecureToken: true,
-        });
-
-        const bodyProfesor = JSON.stringify({
-            email: enteredEmail,
-            password: enteredPassword,
-            nume: enteredNumeProfesor,
-            prenume: enteredPrenumeProfesor,
-            returnSecureToken: true,
-        });
+            default:
+                break;
+        }
 
         setIsLoading(true);
+
+        // auth info realtime database
         let url =
-            "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBVVF0vjKQevex3hCiaGrNpqtJulOS3PFA";
+            "https://sneakyapp-e098d-default-rtdb.firebaseio.com/users.json";
         fetch(url, {
             method: "POST",
-            body: bodyFirma,
+            body: body,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => {
+                setIsLoading(false);
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return res.json().then((data) => {
+                        let errorMessage = "Autentificare eșuată!";
+                        throw new Error(errorMessage);
+                    });
+                }
+            })
+            .then((data) => {
+                const expirationTime = new Date(
+                    new Date().getTime() + +data.expiresIn * 1000
+                );
+                authCtx.login(data.idToken, expirationTime.toISOString());
+                <Navigate to="/test-page" />;
+            })
+            .catch((err) => {
+                alert(err.message);
+            });
+
+        setIsLoading(true);
+        //auth database
+        url =
+            "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBVVF0vjKQevex3hCiaGrNpqtJulOS3PFA";
+        fetch(url, {
+            method: "POST",
+            body: body,
             headers: {
                 "Content-Type": "application/json",
             },
@@ -155,7 +211,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="Denumire"
                 type="text"
-                ref={denumireFirmaRef}
+                inputRef={denumireFirmaRef}
                 required
             />
             <TextField
@@ -163,7 +219,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="CUI"
                 type="text"
-                ref={cuiInputRef}
+                inputRef={cuiInputRef}
                 required
             />
             <TextField
@@ -171,7 +227,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="Judet"
                 type="text"
-                ref={judetFirmaInputRef}
+                inputRef={judetFirmaInputRef}
                 required
             />
             <TextField
@@ -179,7 +235,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="Domeniu activitate"
                 type="text"
-                ref={domeniuActivitateInputRef}
+                inputRef={domeniuActivitateInputRef}
                 required
             />
         </div>
@@ -191,7 +247,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="Nume"
                 type="text"
-                ref={numeStudentInputRef}
+                inputRef={numeStudentInputRef}
                 required
             />
             <TextField
@@ -199,7 +255,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="Prenume"
                 type="text"
-                ref={prenumeStudentInputRef}
+                inputRef={prenumeStudentInputRef}
                 required
             />
             <TextField
@@ -207,7 +263,7 @@ const SignUp = () => {
                 id="outlined-name"
                 type="date"
                 label={isDateFocused && "Data Nasterii"}
-                ref={dataNStudentInputRef}
+                inputRef={dataNStudentInputRef}
                 onFocus={() => {
                     setIsDateFocused(true);
                 }}
@@ -220,7 +276,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="Facultate"
                 type="text"
-                ref={facultateStudentInputRef}
+                inputRef={facultateStudentInputRef}
                 required
             />
             <TextField
@@ -228,7 +284,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="Judetul Facultatii"
                 type="text"
-                ref={judetStudentInputRef}
+                inputRef={judetStudentInputRef}
                 required
             />
             <TextField
@@ -236,7 +292,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="Specializare"
                 type="text"
-                ref={specializareStudentInputRef}
+                inputRef={specializareStudentInputRef}
                 required
             />
             <TextField
@@ -244,7 +300,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="An"
                 type="text"
-                ref={anStudentInputRef}
+                inputRef={anStudentInputRef}
                 required
             />
         </div>
@@ -256,7 +312,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="Nume"
                 type="text"
-                ref={numeTutoreInputRef}
+                inputRef={numeTutoreInputRef}
                 required
             />
             <TextField
@@ -264,7 +320,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="Prenume"
                 type="text"
-                ref={prenumeTutoreInputRef}
+                inputRef={prenumeTutoreInputRef}
                 required
             />
             <TextField
@@ -272,7 +328,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="Firma"
                 type="text"
-                ref={firmaTutoreInputRef}
+                inputRef={firmaTutoreInputRef}
                 required
             />
         </div>
@@ -284,7 +340,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="Nume"
                 type="text"
-                ref={numeProfesorInputRef}
+                inputRef={numeProfesorInputRef}
                 required
             />
             <TextField
@@ -292,7 +348,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="Prenume"
                 type="text"
-                ref={prenumeProfesorInputRef}
+                inputRef={prenumeProfesorInputRef}
                 required
             />
         </div>
@@ -309,7 +365,7 @@ const SignUp = () => {
                         id="outlined-name"
                         label="Email"
                         type="email"
-                        ref={emailInputRef}
+                        inputRef={emailInputRef}
                         required
                     />
                     <TextField
@@ -317,7 +373,7 @@ const SignUp = () => {
                         id="outlined-name"
                         label="Password"
                         type="password"
-                        ref={passwordInputRef}
+                        inputRef={passwordInputRef}
                         required
                     />
                 </div>
@@ -346,13 +402,16 @@ const SignUp = () => {
                 {rol === "tutore" && inregistrareTutore}
                 {rol === "profesor" && inregistrareProfesor}
 
-                <Button
-                    variant="contained"
-                    type="submit"
-                    className={styles["btn-login"]}
-                >
-                    INREGISTREAZĂ-TE
-                </Button>
+                {!isLoading && (
+                    <Button
+                        variant="contained"
+                        type="submit"
+                        className={styles["btn-login"]}
+                    >
+                        Înregistrează-te
+                    </Button>
+                )}
+                {isLoading && <p>Se încarcă...</p>}
                 <div className={styles.inscrie}>
                     <p>Ai deja un cont?</p>
                     <Link to="/login">Loghează-te acum.</Link>
