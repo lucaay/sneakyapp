@@ -19,6 +19,7 @@ const LogIn = () => {
 
     return (
         <div className={styles["bg-login"]}>
+            <h1 className={styles.titlu}>Login</h1>
             <form onSubmit={onSubmitHandler} className={styles.form}>
                 <div className={styles["inputs-container"]}>
                     <TextField

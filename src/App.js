@@ -12,6 +12,7 @@ const App = () => {
         <Routes>
             <Route path="/" exact element={<LogIn />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<LogIn />} />
             {/* {authCtx.isLoggedIn && (
                     <Route path="/" exact element={<LogIn />} />
                 )} */}

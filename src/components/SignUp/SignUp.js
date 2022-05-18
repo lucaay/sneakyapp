@@ -162,6 +162,8 @@ const SignUp = () => {
 
     return (
         <div className={styles["bg-login"]}>
+            <h1 className={styles.titlu}>Înregistrează-te</h1>
+
             <form onSubmit={onSubmitHandler} className={styles.form}>
                 <div className={styles["inputs-container"]}>
                     <TextField

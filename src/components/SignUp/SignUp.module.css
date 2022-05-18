@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
 .bg-login {
     display: flex;
@@ -6,8 +6,15 @@
     height: 100%;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     background-color: #CAF0F8;
+    overflow-y: scroll;
+}
+
+.titlu {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2em;
+    margin: 1.5em 0;
 }
 
 .form {
@@ -21,13 +28,15 @@
     z-index: 1;
     background: #FFFFFF;
     max-width: 360px;
-    margin: 0 auto 100px;
+    margin: auto;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     padding-top: 3em;
     padding-bottom: 3em;
     border-radius: 15px;
     gap: 1em;
+    margin-top: 1em;
+    margin-bottom: 2.5em;
 }
 
 .inputs-container {
@@ -41,7 +50,7 @@
 }
 
 .btn-login {
-    width: 50%;
+    width: 75%;
     background-color: #48CAE4 !important;
 }
 
