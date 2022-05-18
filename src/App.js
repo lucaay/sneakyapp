@@ -4,6 +4,7 @@ import SignUp from "./components/SignUp/SignUp";
 import styles from "./App.module.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AuthContext from "./store/auth-context";
+import TestPage from "./components/TestPage";
 
 const App = () => {
     const authCtx = useContext(AuthContext);
@@ -13,6 +14,8 @@ const App = () => {
             <Route path="/" exact element={<LogIn />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<LogIn />} />
+            <Route path="/test-page" element={<TestPage />} />
+
             {/* {authCtx.isLoggedIn && (
                     <Route path="/" exact element={<LogIn />} />
                 )} */}

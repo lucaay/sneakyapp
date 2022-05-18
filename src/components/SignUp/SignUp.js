@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./SignUp.module.css";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
@@ -9,15 +9,20 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-
+import { Navigate } from "react-router-dom";
+import AuthContext from "../../store/auth-context";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 
 const SignUp = () => {
     const [rol, setRol] = useState("");
 
+    const authCtx = useContext(AuthContext);
+
+    const [isLoading, setIsLoading] = useState(false);
+
     const [isDateFocused, setIsDateFocused] = useState(false);
 
-    const usernameInputRef = useRef(null);
+    const emailInputRef = useRef(null);
     const passwordInputRef = useRef(null);
 
     const denumireFirmaRef = useRef(null);
@@ -45,12 +50,63 @@ const SignUp = () => {
         setRol(e.target.value);
     };
 
-    const onSubmitHandler = (e) => {
-        e.preventDefault();
+    const submitHandler = (event) => {
+        event.preventDefault();
 
-        const usernameValue = usernameInputRef.current.value;
-        const passwordValue = passwordInputRef.current.value;
-        console.log(usernameValue, passwordValue, rol);
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
+
+        setIsLoading(true);
+        let url =
+            "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBVVF0vjKQevex3hCiaGrNpqtJulOS3PFA";
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify({
+                email: ,
+                password,
+                returnSecureToken: true,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => {
+                setIsLoading(false);
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return res.json().then((data) => {
+                        let errorMessage = "Autentificare eșuată!";
+                        throw new Error(errorMessage);
+                    });
+                }
+            })
+            .then((data) => {
+                const expirationTime = new Date(
+                    new Date().getTime() + +data.expiresIn * 1000
+                );
+                authCtx.login(data.idToken, expirationTime.toISOString());
+                <Navigate to="/test-page" />;
+            })
+            .catch((err) => {
+                alert(err.message);
+            });
     };
 
     const inregistrareFirma = (
@@ -207,14 +263,14 @@ const SignUp = () => {
         <div className={styles["bg-login"]}>
             <h1 className={styles.titlu}>Înregistrează-te</h1>
 
-            <form onSubmit={onSubmitHandler} className={styles.form}>
+            <form onSubmit={submitHandler} className={styles.form}>
                 <div className={styles["inputs-container"]}>
                     <TextField
                         className={styles.textField}
                         id="outlined-name"
-                        label="Username"
-                        type="username"
-                        ref={usernameInputRef}
+                        label="Email"
+                        type="email"
+                        ref={emailInputRef}
                         required
                     />
                     <TextField
