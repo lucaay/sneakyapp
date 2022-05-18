@@ -55,22 +55,26 @@ const SignUp = () => {
 
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
+
         const enteredDenumireFirma = denumireFirmaRef.current.value;
         const enteredCui = cuiInputRef.current.value;
         const enteredJudetFirma = judetFirmaInputRef.current.value;
         const enteredDomeniuActivitate = domeniuActivitateInputRef.current.value;
+
         const enteredNumeTutore = numeTutoreInputRef.current.value;
         const enteredPrenumeTutore = prenumeTutoreInputRef.current.value;
         const enteredFirmaTutore = firmaTutoreInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
+
+        const enteredNumeStudent = numeStudentInputRef.current.value;
+        const enteredPrenumeStudent = prenumeStudentInputRef.current.value;
+        const enteredDataNStudent = dataNStudentInputRef.current.value;
+        const enteredFacultateStudent = facultateStudentInputRef.current.value;
+        const enteredAnStudent = anStudentInputRef.current.value;
+        const enteredSpecializareStudent = specializareStudentInputRef.current.value;
+        const enteredJudetStudent = judetStudentInputRef.current.value;
+        
+        const enteredNumeProfesor = numeProfesorInputRef.current.value;
+        const enteredPrenumeProfesor = prenumeProfesorInputRef.current.value;
 
         setIsLoading(true);
         let url =
