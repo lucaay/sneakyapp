@@ -1,11 +1,26 @@
-import React from "react";
+import { useContext } from "react";
 import LogIn from "./components/LogIn/LogIn";
-import styles from "./App.module.css"
+import styles from "./App.module.css";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import AuthContext from "./store/auth-context";
+
 const App = () => {
+    const authCtx = useContext(AuthContext);
+
     return (
-        <div className={styles.App}>
-            <p>hello there</p>
-        </div>
+        <Routes>
+            <Route path="/" exact element={<LogIn />} />
+            {/* {authCtx.isLoggedIn && (
+                    <Route path="/" exact element={<LogIn />} />
+                )} */}
+            {/* {!authCtx.isLoggedIn && (
+                    <Route path="/login" element={<LogIn />} />
+                )} */}
+            {/* <Route path="/profile"> */}
+            {/* {authCtx.isLoggedIn && <UserProfile />} */}
+            {/* {!authCtx.isLoggedIn && <Redirect to="/login" />} */}
+            {/* </Route> */}
+        </Routes>
     );
 };
 

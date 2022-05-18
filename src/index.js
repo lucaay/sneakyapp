@@ -2,21 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LogIn from "./components/LogIn/LogIn";
-import SignUp from "./components/SignUp/SignUp";
+import { AuthContextProvider } from "./store/auth-context";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<App />} />
-                <Route path="/login" element={<LogIn />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/dashboard" element={<App />} />
-            </Routes>
-        </BrowserRouter>
+        <AuthContextProvider>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </AuthContextProvider>
     </React.StrictMode>
 );
