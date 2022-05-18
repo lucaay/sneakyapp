@@ -15,6 +15,15 @@ const SignUp = () => {
     const usernameInputRef = useRef(null);
     const passwordInputRef = useRef(null);
 
+    const denumireFirmaRef = useRef(null);
+    const cuiInputRef = useRef(null);
+    const judetInputRef = useRef(null);
+    const domeniuActivitateInputRef = useRef(null);
+
+    const numeTutoreInputRef = useRef(null);
+    const prenumeTutoreInputRef = useRef(null);
+    const firmaTutoreInputRef = useRef(null);
+
     const rolHandler = (e) => {
         setRol(e.target.value);
     };
@@ -28,18 +37,63 @@ const SignUp = () => {
     };
 
     const inregistrareFirma = (
-        <div>
+        <div className={styles["inputs-container"]}>
             <TextField
                 id="outlined-name"
                 label="Denumire"
                 type="text"
-                ref={usernameInputRef}
+                ref={denumireFirmaRef}
+                required
+            />
+            <TextField
+                id="outlined-name"
+                label="CUI"
+                type="text"
+                ref={cuiInputRef}
+                required
+            />
+            <TextField
+                id="outlined-name"
+                label="Judet"
+                type="text"
+                ref={judetInputRef}
+                required
+            />
+            <TextField
+                id="outlined-name"
+                label="Domeniu activitate"
+                type="text"
+                ref={domeniuActivitateInputRef}
                 required
             />
         </div>
     );
     const inregistrareStudent = <div>formular Student</div>;
-    const inregistrareTutore = <div>formular Tutore</div>;
+    const inregistrareTutore = (
+        <div className={styles["inputs-container"]}>
+            <TextField
+                id="outlined-name"
+                label="Nume"
+                type="text"
+                ref={numeTutoreInputRef}
+                required
+            />
+            <TextField
+                id="outlined-name"
+                label="Prenume"
+                type="text"
+                ref={prenumeTutoreInputRef}
+                required
+            />
+            <TextField
+                id="outlined-name"
+                label="Firma"
+                type="text"
+                ref={firmaTutoreInputRef}
+                required
+            />
+        </div>
+    );
     const inregistrareProfesor = <div>formular Profesor</div>;
 
     return (
