@@ -17,8 +17,8 @@ const LogIn = () => {
     };
 
     return (
-        <form onSubmit={onSubmitHandler}>
-            <div>
+        <form onSubmit={onSubmitHandler} className={styles.form}>
+            <div className={styles["inputs-container"]}>
                 <TextField
                     id="outlined-name"
                     label="Username"
@@ -34,7 +34,11 @@ const LogIn = () => {
                     required
                 />
             </div>
-            <Button variant="contained" type="submit">
+            <Button
+                variant="contained"
+                type="submit"
+                className={styles["btn-login"]}
+            >
                 LOGIN
             </Button>
             <div>
