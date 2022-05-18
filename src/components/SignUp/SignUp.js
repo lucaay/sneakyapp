@@ -96,6 +96,22 @@ const SignUp = () => {
             dataNastere: enteredDataNStudent,
             an: enteredAnStudent,
             judet: enteredJudetStudent,
+        });
+
+        const bodyTutore = JSON.stringify({
+            email: enteredEmail,
+            password: enteredPassword,
+            nume: enteredNumeTutore,
+            prenume: enteredPrenumeTutore,
+            firmaTutore: enteredFirmaTutore,
+            returnSecureToken: true,
+        });
+
+        const bodyProfesor = JSON.stringify({
+            email: enteredEmail,
+            password: enteredPassword,
+            nume: enteredNumeProfesor,
+            prenume: enteredPrenumeProfesor,
             returnSecureToken: true,
         });
 
