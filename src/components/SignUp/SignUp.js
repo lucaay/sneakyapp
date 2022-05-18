@@ -59,7 +59,8 @@ const SignUp = () => {
         const enteredDenumireFirma = denumireFirmaRef.current.value;
         const enteredCui = cuiInputRef.current.value;
         const enteredJudetFirma = judetFirmaInputRef.current.value;
-        const enteredDomeniuActivitate = domeniuActivitateInputRef.current.value;
+        const enteredDomeniuActivitate =
+            domeniuActivitateInputRef.current.value;
 
         const enteredNumeTutore = numeTutoreInputRef.current.value;
         const enteredPrenumeTutore = prenumeTutoreInputRef.current.value;
@@ -70,22 +71,29 @@ const SignUp = () => {
         const enteredDataNStudent = dataNStudentInputRef.current.value;
         const enteredFacultateStudent = facultateStudentInputRef.current.value;
         const enteredAnStudent = anStudentInputRef.current.value;
-        const enteredSpecializareStudent = specializareStudentInputRef.current.value;
+        const enteredSpecializareStudent =
+            specializareStudentInputRef.current.value;
         const enteredJudetStudent = judetStudentInputRef.current.value;
-        
+
         const enteredNumeProfesor = numeProfesorInputRef.current.value;
         const enteredPrenumeProfesor = prenumeProfesorInputRef.current.value;
+
+        const bodyFirma = JSON.stringify({
+            email: enteredEmail,
+            password: enteredPassword,
+            denumire: enteredDenumireFirma,
+            cui: enteredCui,
+            judet: enteredJudetFirma,
+            domeniuActivitate: enteredDomeniuActivitate,
+            returnSecureToken: true,
+        });
 
         setIsLoading(true);
         let url =
             "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBVVF0vjKQevex3hCiaGrNpqtJulOS3PFA";
         fetch(url, {
             method: "POST",
-            body: JSON.stringify({
-                email: ,
-                password,
-                returnSecureToken: true,
-            }),
+            body: bodyFirma,
             headers: {
                 "Content-Type": "application/json",
             },
