@@ -62,15 +62,15 @@ const SignUp = () => {
         const enteredEmail = emailInputRef.current.value;
         const enteredEmail = emailInputRef.current.value;
         const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
-        const enteredEmail = emailInputRef.current.value;
+        const enteredNumeStudent = numeStudentInputRef.current.value;
+        const enteredPrenumeStudent = prenumeStudentInputRef.current.value;
+        const enteredDataNStudent = dataNStudentInputRef.current.value;
+        const enteredFacultateStudent = facultateStudentInputRef.current.value;
+        const enteredAnStudent = anStudentInputRef.current.value;
+        const enteredSpecializareStudent = specializareStudentInputRef.current.value;
+        const enteredJudetStudent = judetStudentInputRef.current.value;
+        const enteredNumeProfesor = numeProfesorInputRef.current.value;
+        const enteredPrenumeProfesor = prenumeProfesorInputRef.current.value;
 
         setIsLoading(true);
         let url =
