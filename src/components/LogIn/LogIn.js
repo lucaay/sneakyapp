@@ -6,14 +6,14 @@ import styles from "./LogIn.module.css";
 import { style } from "@mui/system";
 
 const LogIn = () => {
-    const usernameRef = useRef(null);
-    const passwordRef = useRef(null);
+    const usernameInputRef = useRef(null);
+    const passwordInputRef = useRef(null);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
 
-        const usernameValue = usernameRef.current.value;
-        const passwordValue = passwordRef.current.value;
+        const usernameValue = usernameInputRef.current.value;
+        const passwordValue = passwordInputRef.current.value;
         console.log(usernameValue, passwordValue);
     };
 
@@ -25,14 +25,14 @@ const LogIn = () => {
                         id="outlined-name"
                         label="Username"
                         type="username"
-                        ref={usernameRef}
+                        ref={usernameInputRef}
                         required
                     />
                     <TextField
                         id="outlined-name"
                         label="Password"
                         type="password"
-                        ref={passwordRef}
+                        ref={passwordInputRef}
                         required
                     />
                 </div>
