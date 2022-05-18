@@ -62,3 +62,15 @@
 .form a:hover {
     color: #0096C7;
 }
+
+
+.textField {
+    width: 75%;
+}
+
+
+@media screen and (min-width: 1280px) {
+    .btn-login {
+        width: 50%;
+    }
+}

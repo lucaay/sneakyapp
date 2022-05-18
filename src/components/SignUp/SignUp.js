@@ -10,8 +10,12 @@ import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
+import { LocalizationProvider } from "@mui/x-date-pickers";
+
 const SignUp = () => {
     const [rol, setRol] = useState("");
+
+    const [isDateFocused, setIsDateFocused] = useState(false);
 
     const usernameInputRef = useRef(null);
     const passwordInputRef = useRef(null);
@@ -52,6 +56,7 @@ const SignUp = () => {
     const inregistrareFirma = (
         <div className={styles["inputs-container"]}>
             <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="Denumire"
                 type="text"
@@ -59,6 +64,7 @@ const SignUp = () => {
                 required
             />
             <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="CUI"
                 type="text"
@@ -66,6 +72,7 @@ const SignUp = () => {
                 required
             />
             <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="Judet"
                 type="text"
@@ -73,6 +80,7 @@ const SignUp = () => {
                 required
             />
             <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="Domeniu activitate"
                 type="text"
@@ -84,6 +92,7 @@ const SignUp = () => {
     const inregistrareStudent = (
         <div className={styles["inputs-container"]}>
             <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="Nume"
                 type="text"
@@ -91,21 +100,28 @@ const SignUp = () => {
                 required
             />
             <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="Prenume"
                 type="text"
                 ref={prenumeStudentInputRef}
                 required
             />
-            {/* <DesktopDatePicker
-                label="Date desktop"
-                inputFormat="MM/dd/yyyy"
-                value=""
-                onChange={}
-                ref={dataNStudentInputRef}
-                renderInput={(params) => <TextField {...params} />}
-            /> */}
             <TextField
+                className={styles.textField}
+                id="outlined-name"
+                type="date"
+                label={isDateFocused && "Data Nasterii"}
+                ref={dataNStudentInputRef}
+                onFocus={() => {
+                    setIsDateFocused(true);
+                }}
+                onBlur={() => setIsDateFocused(false)}
+                required
+            />
+
+            <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="Facultate"
                 type="text"
@@ -113,6 +129,7 @@ const SignUp = () => {
                 required
             />
             <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="Judetul Facultatii"
                 type="text"
@@ -120,6 +137,7 @@ const SignUp = () => {
                 required
             />
             <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="Specializare"
                 type="text"
@@ -127,6 +145,7 @@ const SignUp = () => {
                 required
             />
             <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="An"
                 type="text"
@@ -138,6 +157,7 @@ const SignUp = () => {
     const inregistrareTutore = (
         <div className={styles["inputs-container"]}>
             <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="Nume"
                 type="text"
@@ -145,6 +165,7 @@ const SignUp = () => {
                 required
             />
             <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="Prenume"
                 type="text"
@@ -152,6 +173,7 @@ const SignUp = () => {
                 required
             />
             <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="Firma"
                 type="text"
@@ -160,8 +182,10 @@ const SignUp = () => {
             />
         </div>
     );
-    const inregistrareProfesor = <div className={styles["inputs-container"]}>
+    const inregistrareProfesor = (
+        <div className={styles["inputs-container"]}>
             <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="Nume"
                 type="text"
@@ -169,13 +193,15 @@ const SignUp = () => {
                 required
             />
             <TextField
+                className={styles.textField}
                 id="outlined-name"
                 label="Prenume"
                 type="text"
                 ref={prenumeProfesorInputRef}
                 required
             />
-    </div>;
+        </div>
+    );
 
     return (
         <div className={styles["bg-login"]}>
@@ -184,6 +210,7 @@ const SignUp = () => {
             <form onSubmit={onSubmitHandler} className={styles.form}>
                 <div className={styles["inputs-container"]}>
                     <TextField
+                        className={styles.textField}
                         id="outlined-name"
                         label="Username"
                         type="username"
@@ -191,6 +218,7 @@ const SignUp = () => {
                         required
                     />
                     <TextField
+                        className={styles.textField}
                         id="outlined-name"
                         label="Password"
                         type="password"
@@ -203,6 +231,7 @@ const SignUp = () => {
                         Rol*
                     </InputLabel>
                     <Select
+                        className={styles.textField}
                         labelId="demo-simple-select-standard-label"
                         id="demo-simple-select-standard"
                         value={rol}
