@@ -18,7 +18,7 @@ const SignUp = () => {
 
     const denumireFirmaRef = useRef(null);
     const cuiInputRef = useRef(null);
-    const judetInputRef = useRef(null);
+    const judetFirmaInputRef = useRef(null);
     const domeniuActivitateInputRef = useRef(null);
 
     const numeTutoreInputRef = useRef(null);
@@ -32,6 +32,7 @@ const SignUp = () => {
     const facultateStudentInputRef = useRef(null);
     const anStudentInputRef = useRef(null);
     const specializareStudentInputRef = useRef(null);
+    const judetStudentInputRef = useRef(null);
     //
 
     const rolHandler = (e) => {
@@ -66,7 +67,7 @@ const SignUp = () => {
                 id="outlined-name"
                 label="Judet"
                 type="text"
-                ref={judetInputRef}
+                ref={judetFirmaInputRef}
                 required
             />
             <TextField
@@ -107,6 +108,13 @@ const SignUp = () => {
                 label="Facultate"
                 type="text"
                 ref={facultateStudentInputRef}
+                required
+            />
+            <TextField
+                id="outlined-name"
+                label="Judetul Facultatii"
+                type="text"
+                ref={judetStudentInputRef}
                 required
             />
             <TextField
