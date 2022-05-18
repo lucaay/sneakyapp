@@ -8,6 +8,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
 const SignUp = () => {
     const [rol, setRol] = useState("");
@@ -23,6 +24,15 @@ const SignUp = () => {
     const numeTutoreInputRef = useRef(null);
     const prenumeTutoreInputRef = useRef(null);
     const firmaTutoreInputRef = useRef(null);
+
+    //
+    const numeStudentInputRef = useRef(null);
+    const prenumeStudentInputRef = useRef(null);
+    const dataNStudentInputRef = useRef(null);
+    const facultateStudentInputRef = useRef(null);
+    const anStudentInputRef = useRef(null);
+    const specializareStudentInputRef = useRef(null);
+    //
 
     const rolHandler = (e) => {
         setRol(e.target.value);
@@ -68,7 +78,53 @@ const SignUp = () => {
             />
         </div>
     );
-    const inregistrareStudent = <div>formular Student</div>;
+    const inregistrareStudent = (
+        <div className={styles["inputs-container"]}>
+            <TextField
+                id="outlined-name"
+                label="Nume"
+                type="text"
+                ref={numeStudentInputRef}
+                required
+            />
+            <TextField
+                id="outlined-name"
+                label="Prenume"
+                type="text"
+                ref={prenumeStudentInputRef}
+                required
+            />
+            {/* <DesktopDatePicker
+                label="Date desktop"
+                inputFormat="MM/dd/yyyy"
+                value=""
+                onChange={}
+                ref={dataNStudentInputRef}
+                renderInput={(params) => <TextField {...params} />}
+            /> */}
+            <TextField
+                id="outlined-name"
+                label="Facultate"
+                type="text"
+                ref={facultateStudentInputRef}
+                required
+            />
+            <TextField
+                id="outlined-name"
+                label="Specializare"
+                type="text"
+                ref={specializareStudentInputRef}
+                required
+            />
+            <TextField
+                id="outlined-name"
+                label="An"
+                type="text"
+                ref={anStudentInputRef}
+                required
+            />
+        </div>
+    );
     const inregistrareTutore = (
         <div className={styles["inputs-container"]}>
             <TextField
