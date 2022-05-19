@@ -7,6 +7,7 @@ import { getUserEmail } from "../../../Firebase/firebase";
 const AddStage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isDateFocused, setIsDateFocused] = useState(false);
+    const [isSuccess, setIsSucces] = useState(false);
 
     const temaInputRef = useRef(null);
     const domeniuInputRef = useRef(null);
@@ -51,6 +52,12 @@ const AddStage = () => {
         }, 1000);
     }, []);
 
+    useEffect(() => {
+        setTimeout(() => {
+            setIsSucces(false);
+        }, 6000);
+    }, [isSuccess]);
+
     const submitHandler = (event) => {
         event.preventDefault();
         setIsLoading(true);
@@ -84,7 +91,8 @@ const AddStage = () => {
             .then((res) => {
                 setIsLoading(false);
                 if (res.ok) {
-                    alert("Stagiu adăugat cu success!");
+                    // alert("Stagiu adăugat cu success!");
+                    setIsSucces(true);
                     return res.json();
                 } else {
                     return res.json().then((data) => {
@@ -100,6 +108,11 @@ const AddStage = () => {
 
     return (
         <div className={styles["bg-form-stagiu"]}>
+            {isSuccess && (
+                <h1 className={styles["info-success"]}>
+                    Stagiu adăugat cu success!
+                </h1>
+            )}
             <h1 className={styles.titlu}>Adaugă stagiu</h1>
             <form onSubmit={submitHandler} className={styles.form}>
                 <div className={styles["inputs-container"]}>
