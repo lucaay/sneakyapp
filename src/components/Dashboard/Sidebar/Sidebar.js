@@ -20,7 +20,6 @@ const Sidebar = () => {
         setIsLoading(true);
         setTimeout(() => {
             currentUserEmail = getUserEmail();
-            console.log(currentUserEmail);
             let url =
                 "https://sneakyapp-e098d-default-rtdb.firebaseio.com/users.json";
             const fetchUsers = async () => {
@@ -44,7 +43,6 @@ const Sidebar = () => {
                 );
 
                 setUserData(user[0]);
-                console.log(user[0]);
                 setIsLoading(false);
             };
 

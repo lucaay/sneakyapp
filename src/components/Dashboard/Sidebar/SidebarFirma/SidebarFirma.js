@@ -8,16 +8,24 @@ const SidebarFirma = () => {
     return (
         <>
             <SidebarItem
-                location="/adaugare-stagiu"
+                location="/dashboard/adaugare-stagiu"
                 text="Adaugă stagiu"
                 icon={<AddBoxOutlinedIcon />}
-                active={pathname === "/adaugare-stagiu" ? true : false}
+                active={
+                    pathname.includes("/dashboard/adaugare-stagiu")
+                        ? true
+                        : false
+                }
             />
             <SidebarItem
-                location="/modificare-stagiu"
+                location="/dashboard/modificare-stagiu"
                 text="Modifică stagiu"
                 icon={<BorderColorOutlinedIcon />}
-                active={pathname === "/modificare`-stagiu" ? true : false}
+                active={
+                    pathname.includes("/dashboard/modificare-stagiu")
+                        ? true
+                        : false
+                }
             />
         </>
     );
