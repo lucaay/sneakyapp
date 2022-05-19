@@ -81,10 +81,10 @@ const Sidebar = () => {
                     }
                 />
                 <SidebarItem
-                    location="/profile"
+                    location="/dashboard/profile"
                     text="Profilul meu"
                     icon={<PermIdentityOutlinedIcon />}
-                    active={pathname === "/profile" ? true : false}
+                    active={pathname === "/dashboard/profile" ? true : false}
                 />
 
                 {/* daca contul este de firma */}
