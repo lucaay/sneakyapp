@@ -56,7 +56,7 @@ const LogIn = () => {
                     new Date().getTime() + +data.expiresIn * 1000
                 );
                 authCtx.login(data.idToken, expirationTime.toISOString());
-                <Navigate to="/test-page" />;
+                <Navigate to="/" />;
             })
             .catch((err) => {
                 alert(err.message);
