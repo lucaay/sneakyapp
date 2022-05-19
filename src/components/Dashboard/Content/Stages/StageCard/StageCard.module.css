@@ -6,6 +6,7 @@
     height: auto;
     width: 40%;
     gap: 1em;
+    transition: 0.75s all;
 }
 
 .card-info-container{
