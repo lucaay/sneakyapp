@@ -5,9 +5,8 @@ import SidebarItem from "./SidebarItem/SidebarItem";
 import AuthContext from "../../../store/auth-context";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
-import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
-import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import Button from "@mui/material/Button";
+import SidebarFirma from "./SidebarFirma/SidebarFirma";
 
 const Sidebar = () => {
     const authCtx = useContext(AuthContext);
@@ -45,19 +44,7 @@ const Sidebar = () => {
                 />
 
                 {/* daca contul este de firma */}
-                <SidebarItem
-                    location="/adaugare-stagiu"
-                    text="Adaugă stagiu"
-                    icon={<AddBoxOutlinedIcon />}
-                    active={pathname === "/adaugare-stagiu" ? true : false}
-                />
-                <SidebarItem
-                    location="/modificare-stagiu"
-                    text="Modifică stagiu"
-                    icon={<BorderColorOutlinedIcon />}
-                    active={pathname === "/modificare-stagiu" ? true : false}
-                />
-
+                <SidebarFirma />
                 {/* daca contul este de student */}
 
                 {/* daca contul este de tutore */}
