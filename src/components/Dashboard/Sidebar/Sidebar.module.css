@@ -18,5 +18,11 @@
 }
 
 .logout-btn{
-    margin-bottom: 2em;
+    color: #90E0EF;
+    border-color: #90E0EF;
+}
+
+.logout-btn:hover{
+    color: white;
+    border-color: white;
 }
