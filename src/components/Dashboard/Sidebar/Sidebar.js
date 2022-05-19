@@ -16,6 +16,8 @@ const Sidebar = () => {
         <Navigate to="/" />;
     };
 
+    const pathname = window.location.pathname; //returns the current url minus the domain name
+    console.log(pathname);
     return (
         <div className={styles["sidebar-container"]}>
             <div className={styles["sidebar-user"]}>
@@ -27,6 +29,10 @@ const Sidebar = () => {
                     location="/dashboard"
                     text="Acasă"
                     icon={<HomeOutlinedIcon />}
+                    active={
+                        pathname === "/" ||
+                        (pathname === "/dashboard" ? true : false)
+                    }
                 />
                 <SidebarItem
                     location="/profile"
