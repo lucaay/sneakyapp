@@ -17,7 +17,6 @@ const Sidebar = () => {
     };
 
     const pathname = window.location.pathname; //returns the current url minus the domain name
-    console.log(pathname);
     return (
         <div className={styles["sidebar-container"]}>
             <div className={styles["sidebar-user"]}>
@@ -38,6 +37,7 @@ const Sidebar = () => {
                     location="/profile"
                     text="Profilul meu"
                     icon={<PermIdentityOutlinedIcon />}
+                    active={pathname === "/profile" ? true : false}
                 />
             </ul>
             {isLoggedIn && <button onClick={logoutHandler} className={styles["logout-btn"]}>Logout</button>}
