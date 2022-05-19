@@ -8,13 +8,28 @@ import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import Button from "@mui/material/Button";
 import SidebarFirma from "./SidebarFirma/SidebarFirma";
 
+import { auth } from "../../Firebase/firebase";
+
 const Sidebar = () => {
     const authCtx = useContext(AuthContext);
+    const isLoggedIn = authCtx.isLoggedIn;
 
     const [isLoading, setIsLoading] = useState(false);
     const [userData, setUserData] = useState({});
+    const [currentUser, setCurrentUser] = useState();
 
-    const isLoggedIn = authCtx.isLoggedIn;
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            setCurrentUser(user);
+        });
+
+        return unsubscribe;
+    }, []);
+
+    // let userEmail;
+    // if (currentUser !== null) {
+    //     userEmail = currentUser.email;
+    // }
 
     const logoutHandler = () => {
         authCtx.logout();
@@ -23,11 +38,10 @@ const Sidebar = () => {
 
     const pathname = window.location.pathname; //returns the current url minus the domain name
 
+    let url = "https://sneakyapp-e098d-default-rtdb.firebaseio.com/users.json";
     useEffect(() => {
         const fetchUsers = async () => {
-            const response = await fetch(
-                "https://sneakyapp-e098d-default-rtdb.firebaseio.com/users.json"
-            );
+            const response = await fetch(url);
             const responseData = await response.json();
 
             const loadedUsers = [];
@@ -35,21 +49,30 @@ const Sidebar = () => {
             for (const key in responseData) {
                 loadedUsers.push({
                     id: key,
-                    name: responseData[key].name,
-                    description: responseData[key].description,
-                    price: responseData[key].price,
+                    email: responseData[key].email,
+                    rol: responseData[key].rol,
                 });
             }
 
-            setData(loadedUsers);
+            const currentUser = loadedUsers.filter(
+                (item) => item.email === "test@test.com"
+            );
+
+            setUserData(currentUser);
         };
 
         fetchUsers();
-    }, []);
-    let url = "https://sneakyapp-e098d-default-rtdb.firebaseio.com/users";
+    }, [url]);
 
     return (
         <div className={styles["sidebar-container"]}>
+            <button
+                onClick={() => {
+                    console.log(currentUser);
+                }}
+            >
+                Log users
+            </button>
             <div className={styles["sidebar-user"]}>
                 <h3>Bine ai venit, User1</h3>
                 <p>(profesor)</p>
