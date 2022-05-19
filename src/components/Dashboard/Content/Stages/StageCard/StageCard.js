@@ -9,7 +9,7 @@ const StageCard = (props) => {
                 <h3>Firma: {props.firma}</h3>
                 <h1>Tema: {props.tema}</h1>
                 <p>Domeniu: {props.domeniu}</p>
-                <p>Durata: {props.durataa}</p>
+                <p>Durata: {props.durata}</p>
                 <p>Data începere: {props.data}</p>
                 <p>Orar: {props.orar}</p>
             </div>

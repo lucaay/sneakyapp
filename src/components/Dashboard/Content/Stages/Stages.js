@@ -26,7 +26,7 @@ const Stages = () => {
             }
 
             setStages(loadedStages);
-            console.log(loadedStages);
+            console.log(loadedStages.durata);
         };
 
         fetchStages();

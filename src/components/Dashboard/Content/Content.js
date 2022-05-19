@@ -12,6 +12,7 @@ const Content = () => {
                 {}
                 <Route path="adaugare-stagiu" element={<AddStage />} />
                 <Route path="modificare-stagiu" element={<ModifyStage />} />
+                {/* <Route path="profile" element={<ModifyStage />} /> */}
                 <Route path="*" element={<Stages />} />
             </Routes>
         </div>
