@@ -63,7 +63,11 @@ const Stages = () => {
                     orar: responseData[key].orar,
                 });
             }
-            if (rolCont !== "student") {
+            if (
+                rolCont !== "student" ||
+                rolCont !== "tutore" ||
+                rolCont !== "profesor"
+            ) {
                 const newLoadedStages = loadedStages.filter(
                     (item) => item.firma === numeFirmaCurenta
                 );
