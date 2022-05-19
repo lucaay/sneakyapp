@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 .card-container{
     display: flex;
     justify-content: center;
@@ -20,6 +21,7 @@
     padding: 5% 5%;
     box-sizing: border-box;
     word-wrap: break-word;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .card-img{
@@ -33,4 +35,10 @@
 .card-container:hover{
     width: 700px;
     opacity: 1;
+}
+
+@media screen and (max-width: 1280px){
+    .card-container{
+        width: 60%;
+    }
 }
