@@ -31,6 +31,7 @@ const Header = () => {
                     ) {
                         loadedFirme.push(responseData[key].nume);
                     }
+
                     if (
                         responseData[key].rol === "profesor" &&
                         !loadedProfesori.includes(responseData[key].nume)
