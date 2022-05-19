@@ -45,8 +45,8 @@ const Sidebar = () => {
                 <Button
                     variant="outlined"
                     onClick={logoutHandler}
-                    className={styles["logout-btn"]}
                     sx={{ mb: 4 }}
+                    className={styles["logout-btn"]}
                 >
                     Logout
                 </Button>

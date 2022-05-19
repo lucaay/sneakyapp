@@ -1,4 +1,4 @@
-.sidebar-container{
+.sidebar-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,7 +9,7 @@
     color: white;
 }
 
-.links{
+.links {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -17,12 +17,12 @@
     justify-content: center;
 }
 
-.logout-btn{
+.logout-btn {
     color: #90E0EF;
     border-color: #90E0EF;
 }
 
-.logout-btn:hover{
+.logout-btn:hover {
     color: white;
     border-color: white;
 }
