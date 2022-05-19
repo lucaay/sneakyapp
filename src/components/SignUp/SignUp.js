@@ -65,7 +65,6 @@ const SignUp = () => {
 
                 body = JSON.stringify({
                     email: enteredEmail,
-                    password: enteredPassword,
                     rol,
                     denumire: enteredDenumireFirma,
                     cui: enteredCui,
@@ -88,7 +87,6 @@ const SignUp = () => {
 
                 body = JSON.stringify({
                     email: enteredEmail,
-                    password: enteredPassword,
                     rol,
                     nume: enteredNumeStudent,
                     prenume: enteredPrenumeStudent,
@@ -109,7 +107,6 @@ const SignUp = () => {
 
                 body = JSON.stringify({
                     email: enteredEmail,
-                    password: enteredPassword,
                     rol,
                     nume: enteredNumeTutore,
                     prenume: enteredPrenumeTutore,
@@ -124,7 +121,6 @@ const SignUp = () => {
 
                 body = JSON.stringify({
                     email: enteredEmail,
-                    password: enteredPassword,
                     rol,
                     nume: enteredNumeProfesor,
                     prenume: enteredPrenumeProfesor,
@@ -176,7 +172,11 @@ const SignUp = () => {
             "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBVVF0vjKQevex3hCiaGrNpqtJulOS3PFA";
         fetch(url, {
             method: "POST",
-            body: body,
+            body: JSON.stringify({
+                email: enteredEmail,
+                password: enteredPassword,
+                returnSecureToken: true,
+            }),
             headers: {
                 "Content-Type": "application/json",
             },
