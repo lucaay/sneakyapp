@@ -9,12 +9,9 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { Navigate } from "react-router-dom";
-import AuthContext from "../../store/auth-context";
 
 const SignUp = () => {
     const [rol, setRol] = useState("");
-
-    const authCtx = useContext(AuthContext);
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -188,6 +185,9 @@ const SignUp = () => {
             .catch((err) => {
                 alert(err.message);
             });
+        setTimeout(() => {
+            window.location.reload(false);
+        }, 1000);
     };
 
     const inregistrareFirma = (
@@ -285,7 +285,7 @@ const SignUp = () => {
                 className={styles.textField}
                 id="outlined-name"
                 label="An"
-                type="text"
+                type="number"
                 inputRef={anStudentInputRef}
                 required
             />

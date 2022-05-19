@@ -1,18 +1,17 @@
 import React, { useRef, useState, useContext } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styles from "./LogIn.module.css";
 import { style } from "@mui/system";
-
-import AuthContext from "../../store/auth-context";
+import { signIn } from "../Firebase/firebase";
 
 const LogIn = () => {
+    let navigate = useNavigate();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    const authCtx = useContext(AuthContext);
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -25,43 +24,11 @@ const LogIn = () => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-
         setIsLoading(true);
-        let url =
-            "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBVVF0vjKQevex3hCiaGrNpqtJulOS3PFA";
-        fetch(url, {
-            method: "POST",
-            body: JSON.stringify({
-                email,
-                password,
-                returnSecureToken: true,
-            }),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((res) => {
-                setIsLoading(false);
-                if (res.ok) {
-                    <Navigate to="/dashboard" />;
-                    return res.json();
-                } else {
-                    return res.json().then((data) => {
-                        let errorMessage = "Autentificare eșuată!";
-                        throw new Error(errorMessage);
-                    });
-                }
-            })
-            .then((data) => {
-                const expirationTime = new Date(
-                    new Date().getTime() + +data.expiresIn * 1000
-                );
-                authCtx.login(data.idToken, expirationTime.toISOString());
-                <Navigate to="/" />;
-            })
-            .catch((err) => {
-                alert(err.message);
-            });
+        signIn(email, password, setIsLoading);
+        setTimeout(() => {
+            window.location.reload(false);
+        }, 1000);
     };
 
     return (
