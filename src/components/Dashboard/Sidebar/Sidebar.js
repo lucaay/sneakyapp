@@ -47,6 +47,7 @@ const Sidebar = () => {
                     onClick={logoutHandler}
                     sx={{ mb: 4 }}
                     className={styles["logout-btn"]}
+                    color="error"
                 >
                     Logout
                 </Button>
