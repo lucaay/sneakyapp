@@ -51,8 +51,9 @@ export function signIn(email, password, setIsLoading) {
                     headers: {
                         "Content-Type": "application/json",
                     },
+                }).then(() => {
+                    <Navigate to="/" />;
                 });
-                <Navigate to="/" />;
             } else {
                 let errorMessage = "Autentificare eșuată!";
                 throw new Error(errorMessage);
