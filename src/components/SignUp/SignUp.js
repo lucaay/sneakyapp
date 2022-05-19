@@ -150,17 +150,10 @@ const SignUp = () => {
                     return res.json();
                 } else {
                     return res.json().then((data) => {
-                        let errorMessage = "Autentificare eșuată!";
+                        let errorMessage = "Înregistrare eșuată!";
                         throw new Error(errorMessage);
                     });
                 }
-            })
-            .then((data) => {
-                const expirationTime = new Date(
-                    new Date().getTime() + +data.expiresIn * 1000
-                );
-                authCtx.login(data.idToken, expirationTime.toISOString());
-                <Navigate to="/test-page" />;
             })
             .catch((err) => {
                 alert(err.message);
@@ -187,17 +180,10 @@ const SignUp = () => {
                     return res.json();
                 } else {
                     return res.json().then((data) => {
-                        let errorMessage = "Autentificare eșuată!";
+                        let errorMessage = "Înregistrare eșuată!";
                         throw new Error(errorMessage);
                     });
                 }
-            })
-            .then((data) => {
-                const expirationTime = new Date(
-                    new Date().getTime() + +data.expiresIn * 1000
-                );
-                authCtx.login(data.idToken, expirationTime.toISOString());
-                <Navigate to="/test-page" />;
             })
             .catch((err) => {
                 alert(err.message);
