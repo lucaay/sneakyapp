@@ -12,11 +12,24 @@ const App = () => {
 
     return (
         <Routes>
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<LogIn />} />
             <Route path="/test-page" element={<TestPage />} />
             {authCtx.isLoggedIn && (
                 <Route path="/dashboard" element={<Dashboard />} />
+            )}
+            {!authCtx.isLoggedIn && (
+                <Route path="/dashboard" element={<LogIn />} />
+            )}
+
+            {authCtx.isLoggedIn && (
+                <Route path="/login" element={<Dashboard />} />
+            )}
+            {!authCtx.isLoggedIn && <Route path="/login" element={<LogIn />} />}
+
+            {authCtx.isLoggedIn && (
+                <Route path="/signup" element={<Dashboard />} />
+            )}
+            {!authCtx.isLoggedIn && (
+                <Route path="/signup" element={<SignUp />} />
             )}
 
             {authCtx.isLoggedIn && (
