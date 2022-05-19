@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
+import { Navigate } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 import SidebarItem from "./SidebarItem/SidebarItem";
 import AuthContext from "../../../store/auth-context";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
-import { Navigate } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 const Sidebar = () => {
     const authCtx = useContext(AuthContext);
@@ -40,7 +41,15 @@ const Sidebar = () => {
                     active={pathname === "/profile" ? true : false}
                 />
             </ul>
-            {isLoggedIn && <button onClick={logoutHandler} className={styles["logout-btn"]}>Logout</button>}
+            {isLoggedIn && (
+                <Button
+                    variant="outlined"
+                    onClick={logoutHandler}
+                    className={styles["logout-btn"]}
+                >
+                    Logout
+                </Button>
+            )}
         </div>
     );
 };
