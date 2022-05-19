@@ -5,6 +5,8 @@ import SidebarItem from "./SidebarItem/SidebarItem";
 import AuthContext from "../../../store/auth-context";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
+import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
+import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import Button from "@mui/material/Button";
 
 const Sidebar = () => {
@@ -18,6 +20,7 @@ const Sidebar = () => {
     };
 
     const pathname = window.location.pathname; //returns the current url minus the domain name
+
     return (
         <div className={styles["sidebar-container"]}>
             <div className={styles["sidebar-user"]}>
@@ -40,6 +43,26 @@ const Sidebar = () => {
                     icon={<PermIdentityOutlinedIcon />}
                     active={pathname === "/profile" ? true : false}
                 />
+
+                {/* daca contul este de firma */}
+                <SidebarItem
+                    location="/adaugare-stagiu"
+                    text="Adaugă stagiu"
+                    icon={<AddBoxOutlinedIcon />}
+                    active={pathname === "/adaugare-stagiu" ? true : false}
+                />
+                <SidebarItem
+                    location="/modificare-stagiu"
+                    text="Modifică stagiu"
+                    icon={<BorderColorOutlinedIcon />}
+                    active={pathname === "/modificare-stagiu" ? true : false}
+                />
+
+                {/* daca contul este de student */}
+
+                {/* daca contul este de tutore */}
+
+                {/* daca contul este de profesor */}
             </ul>
             {isLoggedIn && (
                 <Button
