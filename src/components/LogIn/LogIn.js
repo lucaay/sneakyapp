@@ -43,6 +43,7 @@ const LogIn = () => {
             .then((res) => {
                 setIsLoading(false);
                 if (res.ok) {
+                    <Navigate to="/dashboard" />;
                     return res.json();
                 } else {
                     return res.json().then((data) => {
