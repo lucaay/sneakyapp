@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 import SidebarItem from "./SidebarItem/SidebarItem";
@@ -11,6 +11,9 @@ import SidebarFirma from "./SidebarFirma/SidebarFirma";
 const Sidebar = () => {
     const authCtx = useContext(AuthContext);
 
+    const [isLoading, setIsLoading] = useState(false);
+    const [userData, setUserData] = useState({});
+
     const isLoggedIn = authCtx.isLoggedIn;
 
     const logoutHandler = () => {
@@ -19,6 +22,31 @@ const Sidebar = () => {
     };
 
     const pathname = window.location.pathname; //returns the current url minus the domain name
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            const response = await fetch(
+                "https://sneakyapp-e098d-default-rtdb.firebaseio.com/users.json"
+            );
+            const responseData = await response.json();
+
+            const loadedUsers = [];
+
+            for (const key in responseData) {
+                loadedUsers.push({
+                    id: key,
+                    name: responseData[key].name,
+                    description: responseData[key].description,
+                    price: responseData[key].price,
+                });
+            }
+
+            setData(loadedUsers);
+        };
+
+        fetchUsers();
+    }, []);
+    let url = "https://sneakyapp-e098d-default-rtdb.firebaseio.com/users";
 
     return (
         <div className={styles["sidebar-container"]}>
@@ -45,6 +73,7 @@ const Sidebar = () => {
 
                 {/* daca contul este de firma */}
                 <SidebarFirma />
+
                 {/* daca contul este de student */}
 
                 {/* daca contul este de tutore */}
