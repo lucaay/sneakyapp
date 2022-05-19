@@ -6,6 +6,7 @@ const Header = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const [usersData, setUsersData] = useState(null);
+    const [users, setUsers] = useState(null);
     const [firme, setFirme] = useState(null);
     const [profesori, setProfesori] = useState(null);
     const [studenti, setStudenti] = useState(null);
@@ -54,6 +55,11 @@ const Header = () => {
                 setFirme(loadedFirme);
                 setProfesori(loadedProfesori);
                 setStudenti(loadedStudenti);
+                setUsers(
+                    loadedFirme.length +
+                        loadedProfesori.length +
+                        loadedStudenti.length
+                );
                 setIsLoading(false);
             };
 
@@ -63,7 +69,7 @@ const Header = () => {
     return (
         <div className={styles["header-container"]}>
             <HeaderItem
-                value={isLoading ? "Se încarcă..." : usersData?.length}
+                value={isLoading ? "Se încarcă..." : users}
                 denumire="Utilizatori Inregistrati"
             />
             <HeaderItem

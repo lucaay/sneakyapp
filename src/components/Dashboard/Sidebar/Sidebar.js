@@ -13,6 +13,7 @@ import logoAlb from "../../../assets/logoAlb.png";
 const Sidebar = () => {
     const isLoggedIn = useIsLoggedIn();
 
+    const [pathname, setPathName] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [userData, setUserData] = useState(null);
 
@@ -49,6 +50,7 @@ const Sidebar = () => {
 
             fetchUsers();
         }, 1000);
+        setPathName(window.location.pathname);
     }, []);
 
     const logoutHandler = () => {
@@ -58,12 +60,10 @@ const Sidebar = () => {
         }, 1000);
     };
 
-    const pathname = window.location.pathname; //returns the current url minus the domain name
-
     return (
         <div className={styles["sidebar-container"]}>
             <div className={styles["sidebar-user"]}>
-            <img src={logoAlb} alt="logo" className={styles['logo-alb']}/>
+                <img src={logoAlb} alt="logo" className={styles["logo-alb"]} />
                 <h3>
                     Bine ai venit, <br /> {isLoading ? "..." : userData?.nume}{" "}
                     {isLoading ? "..." : userData?.prenume}
