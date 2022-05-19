@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import SidebarFirma from "./SidebarFirma/SidebarFirma";
 import useIsLoggedIn from "../../../store/isLoggedIn";
 import { getUserEmail, logOut } from "../../Firebase/firebase";
+import logoAlb from "../../../assets/logoAlb.png";
 
 const Sidebar = () => {
     const isLoggedIn = useIsLoggedIn();
@@ -62,6 +63,7 @@ const Sidebar = () => {
     return (
         <div className={styles["sidebar-container"]}>
             <div className={styles["sidebar-user"]}>
+            <img src={logoAlb} alt="logo" className={styles['logo-alb']}/>
                 <h3>
                     Bine ai venit, <br /> {isLoading ? "..." : userData?.nume}{" "}
                     {isLoading ? "..." : userData?.prenume}

@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     background-color: #03045E;
     height: 100vh;
     width: 250px;
@@ -20,6 +20,8 @@
     justify-content: center;
 }
 
+
+
 .sidebar-user {
     margin-top: 2em;
     text-align: center;
@@ -32,12 +34,14 @@
     font-style: italic;
 }
 
+
 .sidebar-user-rol {
     text-transform: capitalize;
     margin-top: 0.5em;
 }
 
 .logout-btn {
+    margin-top: 9em;
     color: #90E0EF;
     border-color: #90E0EF;
 }
@@ -45,4 +49,9 @@
 .logout-btn:hover {
     color: white;
     border-color: white;
+}
+
+.logo-alb{
+    width: 50%;
+    height: auto;
 }

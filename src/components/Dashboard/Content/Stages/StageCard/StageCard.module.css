@@ -2,8 +2,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
     height: auto;
+    width: 40%;
     gap: 1em;
+}
+
+.card-info-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.35);
+    background-color: #fff;
+    gap: 1em;
+    padding: 5% 5%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+.card-img{
+    background-position: center;
+    width: 50%;
+    height: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card-container:hover{
+    width: 700px;
+    opacity: 1;
 }
