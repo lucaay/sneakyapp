@@ -9,27 +9,22 @@ import Button from "@mui/material/Button";
 import SidebarFirma from "./SidebarFirma/SidebarFirma";
 
 import { auth } from "../../Firebase/firebase";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Sidebar = () => {
     const authCtx = useContext(AuthContext);
     const isLoggedIn = authCtx.isLoggedIn;
 
+    const auth = getAuth();
+    let currentUserEmail;
+    const currentUser = auth.currentUser;
+    if (currentUser) {
+        currentUserEmail = currentUser.email;
+    }
+    console.log(currentUser);
+
     const [isLoading, setIsLoading] = useState(false);
     const [userData, setUserData] = useState({});
-    const [currentUser, setCurrentUser] = useState();
-
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((user) => {
-            setCurrentUser(user);
-        });
-
-        return unsubscribe;
-    }, []);
-
-    // let userEmail;
-    // if (currentUser !== null) {
-    //     userEmail = currentUser.email;
-    // }
 
     const logoutHandler = () => {
         authCtx.logout();
@@ -54,11 +49,11 @@ const Sidebar = () => {
                 });
             }
 
-            const currentUser = loadedUsers.filter(
+            const user = loadedUsers.filter(
                 (item) => item.email === "test@test.com"
             );
 
-            setUserData(currentUser);
+            setUserData(user);
         };
 
         fetchUsers();
@@ -68,7 +63,7 @@ const Sidebar = () => {
         <div className={styles["sidebar-container"]}>
             <button
                 onClick={() => {
-                    console.log(currentUser);
+                    console.log(currentUserEmail);
                 }}
             >
                 Log users
