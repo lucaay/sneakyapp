@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 .sidebar-container {
     display: flex;
     flex-direction: column;
@@ -17,6 +18,17 @@
     justify-content: center;
 }
 
+.sidebar-user{
+    margin-top: 2em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.sidebar-user p{
+    text-align: center;
+    font-size: small;
+    font-style: italic;
+}
+
 .logout-btn {
     color: #90E0EF;
     border-color: #90E0EF;
@@ -26,3 +38,4 @@
     color: white;
     border-color: white;
 }
+
