@@ -40,7 +40,7 @@ const Sidebar = () => {
                     icon={<PermIdentityOutlinedIcon />}
                 />
             </ul>
-            {isLoggedIn && <button onClick={logoutHandler}>Logout</button>}
+            {isLoggedIn && <button onClick={logoutHandler} className={styles["logout-btn"]}>Logout</button>}
         </div>
     );
 };

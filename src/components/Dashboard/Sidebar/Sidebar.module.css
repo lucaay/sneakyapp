@@ -16,3 +16,7 @@
     align-items: flex-end;
     justify-content: center;
 }
+
+.logout-btn{
+    margin-bottom: 2em;
+}
