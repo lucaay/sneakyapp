@@ -28,10 +28,7 @@ const Stages = () => {
                     ) {
                         loadedFirme = responseData[key].nume;
                     }
-                    if (
-                        responseData[key].rol === "student" &&
-                        responseData[key].email === currentUserEmail
-                    ) {
+                    if (responseData[key].email === currentUserEmail) {
                         setRolCont(responseData[key].rol);
                     }
                 }
@@ -63,13 +60,18 @@ const Stages = () => {
                     orar: responseData[key].orar,
                 });
             }
-            if (rolCont === "firma") {
+
+            if (
+                rolCont === "student" ||
+                rolCont === "profesor" ||
+                rolCont === "tutore"
+            ) {
+                setStages(loadedStages);
+            } else {
                 const newLoadedStages = loadedStages.filter(
                     (item) => item.firma === numeFirmaCurenta
                 );
                 setStages(newLoadedStages);
-            } else {
-                setStages(loadedStages);
             }
         };
 
