@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
+.show-stat{
+    display: flex;
+    flex-direction: column;
+}
+
+.valoare-headerItem{
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-size: 2em;
+}
+
+.denumire-headerItem{
+    font-family: 'Lato', sans-serif;
+    color:white;
+    font-size: 1em;
+}
