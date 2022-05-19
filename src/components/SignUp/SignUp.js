@@ -9,6 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { Navigate } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
 const SignUp = () => {
     const [rol, setRol] = useState("");
@@ -342,7 +343,7 @@ const SignUp = () => {
 
     return (
         <div className={styles["bg-login"]}>
-            <h1 className={styles.titlu}>Înregistrează-te</h1>
+            <img src={logo} alt="logo" className={styles.img} />
 
             <form onSubmit={submitHandler} className={styles.form}>
                 <div className={styles["inputs-container"]}>

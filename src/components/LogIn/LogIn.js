@@ -31,7 +31,7 @@ const LogIn = () => {
 
     return (
         <div className={styles["bg-login"]}>
-            <h1 className={styles.titlu}>Login</h1>
+            <img src={logo} alt="logo" className={styles.img} />
             <form onSubmit={submitHandler} className={styles.form}>
                 <div className={styles["inputs-container"]}>
                     <TextField
