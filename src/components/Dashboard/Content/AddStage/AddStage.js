@@ -14,10 +14,11 @@ const AddStage = () => {
 
     return (
         <div className={styles["bg-form-stagiu"]}>
-            <h1 className={styles.titlu}>Login</h1>
+            <h1 className={styles.titlu}>Adaugă stagiu</h1>
             <form onSubmit={submitHandler} className={styles.form}>
                 <div className={styles["inputs-container"]}>
                     <TextField
+                        className={styles.textField}
                         id="tema"
                         label="Tema"
                         type="text"
@@ -25,6 +26,7 @@ const AddStage = () => {
                         required
                     />
                     <TextField
+                        className={styles.textField}
                         id="Domeniu"
                         label="Domeniu"
                         type="text"
@@ -44,6 +46,7 @@ const AddStage = () => {
                         required
                     />
                     <TextField
+                        className={styles.textField}
                         id="Durată"
                         label="Durată"
                         type="text"
@@ -51,6 +54,7 @@ const AddStage = () => {
                         required
                     />
                     <TextField
+                        className={styles.textField}
                         id="Orar"
                         label="Orar"
                         type="text"
@@ -63,7 +67,7 @@ const AddStage = () => {
                     <Button
                         variant="contained"
                         type="submit"
-                        className={styles["btn-login"]}
+                        className={styles["btn-adauga"]}
                     >
                         ADAUGĂ STAGIU
                     </Button>
