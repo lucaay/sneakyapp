@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "./StageCard.module.css";
+import logo from "../../../../../assets/logo.png";
 
 const StageCard = (props) => {
     return (
         <div className={styles["card-container"]}>
-            <img src="" />
+            <img src={logo} alt="logo" className={styles['card-img']} />
             <div className={styles["card-info-container"]}>
                 <h3>Firma: {props.firma}</h3>
                 <h1>Tema: {props.tema}</h1>
