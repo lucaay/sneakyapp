@@ -1,15 +1,101 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styles from "./AddStage.module.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { getUserEmail } from "../../../Firebase/firebase";
 
 const AddStage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isDateFocused, setIsDateFocused] = useState(false);
 
+    const temaInputRef = useRef(null);
+    const domeniuInputRef = useRef(null);
+    const dataInputRef = useRef(null);
+    const durataInputRef = useRef(null);
+    const orarInputRef = useRef(null);
+
+    const [userData, setUserData] = useState(null);
+
+    let currentUserEmail;
+    useEffect(() => {
+        setIsLoading(true);
+        setTimeout(() => {
+            currentUserEmail = getUserEmail();
+            let url =
+                "https://sneakyapp-e098d-default-rtdb.firebaseio.com/users.json";
+            const fetchUsers = async () => {
+                const response = await fetch(url);
+                const responseData = await response.json();
+
+                const loadedUsers = [];
+
+                for (const key in responseData) {
+                    loadedUsers.push({
+                        id: key,
+                        email: responseData[key].email,
+                        nume: responseData[key].nume,
+                        prenume: responseData[key]?.prenume,
+                        rol: responseData[key].rol,
+                    });
+                }
+
+                const user = loadedUsers.filter(
+                    (item) => item.email === currentUserEmail
+                );
+
+                setUserData(user[0]);
+                setIsLoading(false);
+            };
+
+            fetchUsers();
+        }, 1000);
+    }, []);
+
     const submitHandler = (event) => {
         event.preventDefault();
         setIsLoading(true);
+
+        const enteredTema = temaInputRef.current.value;
+        const enteredDomeniu = domeniuInputRef.current.value;
+        const enteredData = dataInputRef.current.value;
+        const enteredDurata = durataInputRef.current.value;
+        const enteredOrar = orarInputRef.current.value;
+
+        let body = JSON.stringify({
+            firma: userData.nume,
+            tema: enteredTema,
+            domeniu: enteredDomeniu,
+            data: enteredData,
+            durata: enteredDurata,
+            orar: enteredOrar,
+            returnSecureToken: true,
+        });
+
+        // auth info realtime database
+        let url =
+            "https://sneakyapp-e098d-default-rtdb.firebaseio.com/stages.json";
+        fetch(url, {
+            method: "POST",
+            body: body,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => {
+                setIsLoading(false);
+                if (res.ok) {
+                    alert("Stagiu adăugat cu success!");
+                    return res.json();
+                } else {
+                    return res.json().then((data) => {
+                        let errorMessage = "Operațiune adăugare stagiu eșuată!";
+                        throw new Error(errorMessage);
+                    });
+                }
+            })
+            .catch((err) => {
+                alert(err.message);
+            });
     };
 
     return (
@@ -21,14 +107,14 @@ const AddStage = () => {
                         id="tema"
                         label="Tema"
                         type="text"
-                        // ref={}
+                        inputRef={temaInputRef}
                         required
                     />
                     <TextField
                         id="Domeniu"
                         label="Domeniu"
                         type="text"
-                        // ref={}
+                        inputRef={domeniuInputRef}
                         required
                     />
                     <TextField
@@ -36,7 +122,7 @@ const AddStage = () => {
                         id="outlined-name"
                         type="date"
                         label={isDateFocused && "Data de început"}
-                        // inputRef={dataNStudentInputRef}
+                        inputRef={dataInputRef}
                         onFocus={() => {
                             setIsDateFocused(true);
                         }}
@@ -47,14 +133,14 @@ const AddStage = () => {
                         id="Durată"
                         label="Durată"
                         type="text"
-                        // ref={}
+                        inputRef={durataInputRef}
                         required
                     />
                     <TextField
                         id="Orar"
                         label="Orar"
                         type="text"
-                        // ref={}
+                        inputRef={orarInputRef}
                         required
                     />
                 </div>
