@@ -41,6 +41,17 @@ export function signIn(email, password, setIsLoading) {
             // Signed in
             if (userCredential) {
                 const user = userCredential.user;
+                const url =
+                    "https://sneakyapp-e098d-default-rtdb.firebaseio.com/isLoggedIn.json";
+                fetch(url, {
+                    method: "PUT",
+                    body: JSON.stringify({
+                        isLoggedIn: true,
+                    }),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
                 <Navigate to="/" />;
             } else {
                 let errorMessage = "Autentificare eșuată!";
@@ -52,18 +63,6 @@ export function signIn(email, password, setIsLoading) {
             alert(err.message);
             <Navigate to="/" />;
         });
-
-    const url =
-        "https://sneakyapp-e098d-default-rtdb.firebaseio.com/isLoggedIn.json";
-    fetch(url, {
-        method: "PUT",
-        body: JSON.stringify({
-            isLoggedIn: true,
-        }),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
 }
 
 export function logOut() {

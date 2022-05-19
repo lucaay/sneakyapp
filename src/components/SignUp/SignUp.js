@@ -63,7 +63,7 @@ const SignUp = () => {
                 body = JSON.stringify({
                     email: enteredEmail,
                     rol,
-                    denumire: enteredDenumireFirma,
+                    nume: enteredDenumireFirma,
                     cui: enteredCui,
                     judet: enteredJudetFirma,
                     domeniuActivitate: enteredDomeniuActivitate,

@@ -33,6 +33,8 @@ const Sidebar = () => {
                     loadedUsers.push({
                         id: key,
                         email: responseData[key].email,
+                        nume: responseData[key].nume,
+                        prenume: responseData[key]?.prenume,
                         rol: responseData[key].rol,
                     });
                 }
@@ -62,8 +64,13 @@ const Sidebar = () => {
     return (
         <div className={styles["sidebar-container"]}>
             <div className={styles["sidebar-user"]}>
-                <h3>Bine ai venit, {isLoading ? "..." : userData?.email}</h3>
-                <p>(profesor)</p>
+                <h3>
+                    Bine ai venit, <br /> {isLoading ? "..." : userData?.nume}{" "}
+                    {isLoading ? "..." : userData?.prenume}
+                </h3>
+                <p className={styles["sidebar-user-rol"]}>
+                    Tip cont: {isLoading ? "..." : userData?.rol}
+                </p>
             </div>
             <ul className={styles.links}>
                 <SidebarItem
