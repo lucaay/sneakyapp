@@ -14,7 +14,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.35);
     background-color: #fff;
     gap: 1em;
     padding: 5% 5%;
