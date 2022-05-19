@@ -6,7 +6,7 @@ const StageCard = (props) => {
         <div className={styles["card-container"]}>
             <img src="" />
             <div className={styles["card-info-container"]}>
-                <h3>Firma: {props.nume}</h3>
+                <h3>Firma: {props.firma}</h3>
                 <h1>Tema: {props.tema}</h1>
                 <p>Domeniu: {props.domeniu}</p>
                 <p>Durata: {props.durataa}</p>

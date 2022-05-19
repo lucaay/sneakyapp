@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import StageCard from "./StageCard/StageCard";
 import styles from "./Stages.module.css";
 
 const Stages = () => {
@@ -25,11 +26,26 @@ const Stages = () => {
             }
 
             setStages(loadedStages);
+            console.log(loadedStages);
         };
 
         fetchStages();
     }, []);
-    return <div className={styles["stages-container"]}></div>;
+    return (
+        <div className={styles["stages-container"]}>
+            {stages?.map((stagiu) => (
+                <StageCard
+                    key={stagiu.id}
+                    firma={stagiu.firma}
+                    tema={stagiu.tema}
+                    domeniu={stagiu.domeniu}
+                    durata={stagiu.durata}
+                    data={stagiu.data}
+                    orar={stagiu.orar}
+                />
+            ))}
+        </div>
+    );
 };
 
 export default Stages;

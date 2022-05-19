@@ -1,15 +1,13 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Navigate, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styles from "./LogIn.module.css";
-import { style } from "@mui/system";
+
 import { signIn } from "../Firebase/firebase";
+import logo from "../../assets/logo.png";
 
 const LogIn = () => {
-    let navigate = useNavigate();
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
