@@ -56,12 +56,12 @@ const Profile = (props) => {
             {isLoading && "Se încarcă..."}
             {!isLoading && (
                 <div className={styles["text"]}>
-                    <p>Nume: {userData.nume}</p>
+                    <p>Nume: {userData?.nume}</p>
                     <p>
                         {userData?.prenume && "Prenume: " + userData?.prenume}
                     </p>
-                    <p>E-mail: {userData.email}</p>
-                    <p>Tip cont: {userData.rol}</p>
+                    <p>E-mail: {userData?.email}</p>
+                    <p>Tip cont: {userData?.rol}</p>
                     <p>
                         {userData?.dataNastere &&
                             "Data Nașterii: " + userData?.dataNastere}
