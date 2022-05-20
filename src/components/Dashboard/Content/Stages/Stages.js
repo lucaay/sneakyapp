@@ -82,6 +82,7 @@ const Stages = () => {
             {stages?.map((stagiu) => (
                 <StageCard
                     key={stagiu.id}
+                    stageID={stagiu.id}
                     firma={stagiu.firma}
                     tema={stagiu.tema}
                     domeniu={stagiu.domeniu}

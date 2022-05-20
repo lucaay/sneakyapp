@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
-.card-container{
+
+.card-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +11,7 @@
     transition: 0.75s all;
 }
 
-.card-info-container{
+.card-info-container {
     width: 100%;
     height: auto;
     display: flex;
@@ -24,7 +25,7 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-.card-img{
+.card-img {
     background-position: center;
     width: 50%;
     height: auto;
@@ -32,13 +33,17 @@
     background-repeat: no-repeat;
 }
 
-.card-container:hover{
+.card-container:hover {
     width: 700px;
     opacity: 1;
 }
 
-@media screen and (max-width: 1280px){
-    .card-container{
+@media screen and (max-width: 1280px) {
+    .card-container {
         width: 60%;
     }
+}
+
+.remove-btn:hover {
+    background-color: rgba(255, 0, 0, 0.314);
 }

@@ -1,11 +1,7 @@
 import firebase from "firebase/compat/app";
+import { getDatabase, ref, remove } from "firebase/database";
 import "firebase/compat/auth";
-import {
-    getAuth,
-    onAuthStateChanged,
-    signInWithEmailAndPassword,
-} from "firebase/auth";
-import { useState, useEffect } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Navigate } from "react-router-dom";
 
 const app = firebase.initializeApp({
@@ -88,5 +84,17 @@ export function logOut() {
         headers: {
             "Content-Type": "application/json",
         },
+    });
+}
+
+// const database = firebase.database();
+// export const stagesRef = database.child("stages");
+
+export function removeItem(id) {
+    const db = getDatabase();
+    remove(ref(db, "stages/" + id)).then(() => {
+        setTimeout(() => {
+            window.location.reload(false);
+        }, 500);
     });
 }
