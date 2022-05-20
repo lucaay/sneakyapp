@@ -55,7 +55,12 @@ const AddStage = () => {
     useEffect(() => {
         setTimeout(() => {
             setIsSucces(false);
-        }, 6000);
+            if (isSuccess === true) {
+                setTimeout(() => {
+                    window.location.reload(false);
+                }, 500);
+            }
+        }, 2000);
     }, [isSuccess]);
 
     const submitHandler = (event) => {

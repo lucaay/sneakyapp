@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./SignUp.module.css";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
@@ -15,6 +15,7 @@ const SignUp = () => {
     const [rol, setRol] = useState("");
 
     const [isLoading, setIsLoading] = useState(false);
+    const [isSucces, setIsSuccess] = useState(false);
 
     const [isDateFocused, setIsDateFocused] = useState(false);
 
@@ -145,6 +146,7 @@ const SignUp = () => {
             .then((res) => {
                 setIsLoading(false);
                 if (res.ok) {
+                    setIsSuccess(true);
                     return res.json();
                 } else {
                     return res.json().then((data) => {
@@ -186,10 +188,17 @@ const SignUp = () => {
             .catch((err) => {
                 alert(err.message);
             });
-        setTimeout(() => {
-            window.location.reload(false);
-        }, 1000);
     };
+    useEffect(() => {
+        setTimeout(() => {
+            setIsSuccess(false);
+            if (isSucces === true) {
+                setTimeout(() => {
+                    window.location.reload(false);
+                }, 500);
+            }
+        }, 2000);
+    }, [isSucces]);
 
     const inregistrareFirma = (
         <div className={styles["inputs-container"]}>
@@ -346,6 +355,11 @@ const SignUp = () => {
             <img src={logo} alt="logo" className={styles.img} />
 
             <form onSubmit={submitHandler} className={styles.form}>
+                {isSucces && (
+                    <h1 className={styles["info-success"]}>
+                        Cont creat cu success!
+                    </h1>
+                )}
                 <div className={styles["inputs-container"]}>
                     <TextField
                         className={styles.textField}

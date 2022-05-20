@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ModifyStage.module.css";
 
 const ModifyStage = () => {
-    return <div>ModifyStage</div>;
+    return <div className={styles.coming}>Coming soon...</div>;
 };
 
 export default ModifyStage;
