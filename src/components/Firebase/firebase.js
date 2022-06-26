@@ -5,21 +5,14 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Navigate } from "react-router-dom";
 
 const app = firebase.initializeApp({
-    apiKey: "your_api_key",
-
-    authDomain: "your_domain",
-
-    databaseURL: "url_firebase",
-
-    projectId: "id_proiect",
-
-    storageBucket: "storage_bucket_firebase",
-
-    messagingSenderId: "_sender_id_messaging",
-
-    appId: "app_id",
-
-    measurementId: "measurement_id",
+    apiKey: "AIzaSyBVVF0vjKQevex3hCiaGrNpqtJulOS3PFA",
+    authDomain: "sneakyapp-e098d.firebaseapp.com",
+    databaseURL: "https://sneakyapp-e098d-default-rtdb.firebaseio.com",
+    projectId: "sneakyapp-e098d",
+    storageBucket: "sneakyapp-e098d.appspot.com",
+    messagingSenderId: "177164763700",
+    appId: "1:177164763700:web:929398cd51eca4b344c061",
+    measurementId: "G-LXR0MHTN5V",
 });
 
 // to be filled with your own firebase project data
