@@ -1,6 +1,6 @@
 # SneakyApp
-Aplicatie de gestiune a stagiilor de practica
 
+Aplicatie de gestiune a stagiilor de practica
 
 1. NodeJs trebuie sa fie instalat.
 2. Se intra pe VisualStudio Code.
@@ -11,7 +11,8 @@ Aplicatie de gestiune a stagiilor de practica
 7. Have fun!
 
 NOTA:
-- Pentru a folosit aplicatia este necesar sa creati un cont. 
+
+- Pentru a folosit aplicatia este necesar sa creati un cont.
 - Stagiile sunt afisate pe pagina de Acasa dar daca nu este niciun stagiu adaugat, pentru nici o firma nu va aparea numic.
 - Se creeaza cont de firma, se adauga stagii si se pot vizualiza toate stagiile.
 
