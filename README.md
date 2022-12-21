@@ -1,4 +1,4 @@
-# SneakyApp
+# SneakyApp - 48h Hackathon - Dunarea de Jos University of Galati 
 
 EN:
 Management application of internships

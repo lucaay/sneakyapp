@@ -14,24 +14,29 @@ import logo from "../../assets/logo.png";
 const SignUp = () => {
     const [rol, setRol] = useState("");
 
+
+    // loading/loaded
     const [isLoading, setIsLoading] = useState(false);
     const [isSucces, setIsSuccess] = useState(false);
 
     const [isDateFocused, setIsDateFocused] = useState(false);
 
+    // credentials
     const emailInputRef = useRef(null);
     const passwordInputRef = useRef(null);
 
+    //company account
     const denumireFirmaRef = useRef(null);
     const cuiInputRef = useRef(null);
     const judetFirmaInputRef = useRef(null);
     const domeniuActivitateInputRef = useRef(null);
 
+    //guardian account
     const numeTutoreInputRef = useRef(null);
     const prenumeTutoreInputRef = useRef(null);
     const firmaTutoreInputRef = useRef(null);
 
-    //
+    //student account
     const numeStudentInputRef = useRef(null);
     const prenumeStudentInputRef = useRef(null);
     const dataNStudentInputRef = useRef(null);
@@ -39,7 +44,8 @@ const SignUp = () => {
     const anStudentInputRef = useRef(null);
     const specializareStudentInputRef = useRef(null);
     const judetStudentInputRef = useRef(null);
-    //
+
+    //teacher account
     const numeProfesorInputRef = useRef(null);
     const prenumeProfesorInputRef = useRef(null);
 
