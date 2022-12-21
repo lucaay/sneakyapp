@@ -1,14 +1,31 @@
 # SneakyApp
 
+EN:
+Management application of internships
+
+1. NodeJs must be installed.
+2. Clone repo to VSCode.
+3. Run "npm install"
+4. Run "npm start".
+5. Have fun!
+
+NOTE:
+
+- To use the application, it is necessary to create an account.
+- The internships are displayed on the Home page, but if no internship is added, nothing will appear for any company.
+- A company account is created, internships are added and all internships can be viewed.
+
+- Companies will only have access to their internships.
+- Students, tutors and teachers will have access to all internships from all companies.
+
+RO:
 Aplicatie de gestiune a stagiilor de practica
 
 1. NodeJs trebuie sa fie instalat.
-2. Se intra pe VisualStudio Code.
-3. Se adauga folderul cu proiectul in workspace.
-4. Se deschide un terminal in VSCode.
-5. Se ruleaza "npm install".
-6. Se ruleaza "npm start".
-7. Have fun!
+2. Se cloneaza Repo-ul in VSCode.
+3. Se ruleaza "npm install".
+4. Se ruleaza "npm start".
+5. Have fun!
 
 NOTA:
 
