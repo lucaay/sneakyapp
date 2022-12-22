@@ -1,5 +1,7 @@
 # SneakyApp - 48h Hackathon - Dunarea de Jos University of Galati 
 
+LIVE DEMO: https://sneakyapp.vercel.app
+
 EN:
 Management application of internships
 

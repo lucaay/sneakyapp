@@ -68,7 +68,7 @@ const StageCard = (props) => {
                 <p>Durata: {props.durata}</p>
                 <p>Data începere: {props.data}</p>
                 <p>Orar: {props.orar}</p>
-                {isVisible && (
+                {isVisible && rolCont === 'firma' && (
                     <Button
                         variant="outlined"
                         onClick={removeHandler}
